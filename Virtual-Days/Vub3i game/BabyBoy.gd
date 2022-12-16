@@ -12,12 +12,6 @@ signal health_updated(health)
 signal killed()
 signal timeout
 
-const bulletPath = preload("res://Other/enemyProjectile.tscn")
-
-
-
-var player = null
-
 # Setting the moving_left to true to start the enemy's movement in a direction we want and setting up a random
 # number generator
 var is_moving_left = true
@@ -83,16 +77,6 @@ func damage(amount):
 func kill():
 	pass
 	
-
-func shoot():
-	var bullet = bulletPath.instance()
-	
-	get_parent().add_child(bullet)
-	bullet.position = $Position2D.global_position
-	var previous_position = bullet.position
-	
-	bullet.velocity = get_parent().get_node("Bob").global_position - bullet.position 
-
 func _on_hit():
 	# When the bullet has hit the enemy, it will choose a random integer between XXX and XXX to deal to the enemy.
 	_process(0)
@@ -121,15 +105,3 @@ func _set_health(value):
 			self.queue_free()
 
 # Setting up the bullet's damage and a backup enemy kill
-
-
-func _on_Area2D_area_entered(area):
-	print("something is near")
-	while area.is_in_group("player"):
-		print("enemy can shoot")
-		player = area
-		area.position
-		print(area.position)		
-		print("it's player!!!!!")
-		shoot()
-		yield(get_tree().create_timer(2), "timeout")

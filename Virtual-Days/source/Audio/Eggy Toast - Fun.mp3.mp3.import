@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Eggy Toast - Fun.mp3.mp3-31ced62075c57922f4d087ecc0063f09.mp3str"
+
+[deps]
+
+source_file="res://source/Audio/Eggy Toast - Fun.mp3.mp3"
+dest_files=[ "res://.import/Eggy Toast - Fun.mp3.mp3-31ced62075c57922f4d087ecc0063f09.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
