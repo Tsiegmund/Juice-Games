@@ -56,6 +56,8 @@ func _physics_process(_delta):
 		shoot()
 		can_shoot = false
 		attack_time.start()
+	if (Input.is_action_just_pressed("shoot") && can_shoot != true):
+		print("Player cannot shoot yet!")
 		
 		$Node2D.look_at(get_global_mouse_position())
 	var label = get_node("Label")
