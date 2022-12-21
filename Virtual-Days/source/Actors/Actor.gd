@@ -14,11 +14,24 @@ var velocity = Vector2()
 export (float) var max_health = 18
 onready var health = max_health setget _set_health
 
+var in_range
+var can_shoot = true
+var attack_time
+var attack_delay = 1
 
 func _ready():
 	add_to_group("player")
 	
+	attack_time = Timer.new()
+	attack_time.set_one_shot(true)
+	attack_time.set_wait_time(attack_delay)
+	attack_time.connect("timeout", self, "_on_timeout_complete")
+	add_child(attack_time)
 
+func _on_timeout_complete():
+	can_shoot = true
+	print("time complete")
+	
 func _physics_process(_delta):
 	
 	velocity.y = velocity.y + GRAVITY
@@ -39,13 +52,17 @@ func _physics_process(_delta):
 	if Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
 		velocity.x = 0
 	
-	if Input.is_action_just_pressed("shoot"):
+	if (Input.is_action_just_pressed("shoot") && can_shoot == true):
 		shoot()
+		can_shoot = false
+		attack_time.start()
 		
 		$Node2D.look_at(get_global_mouse_position())
 	var label = get_node("Label")
 	label.text = str(health) + "/" + str(max_health)
 	move_and_slide(velocity, Vector2(0, -1))
+	
+
 
 func shoot():
 	var bullet = bulletPath.instance()
