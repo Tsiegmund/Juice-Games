@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/senator_armstrong.mp3-252e939d99dee91f0914b8068f68ab30.mp3str"
+
+[deps]
+
+source_file="res://Audio/senator_armstrong.mp3"
+dest_files=[ "res://.import/senator_armstrong.mp3-252e939d99dee91f0914b8068f68ab30.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
